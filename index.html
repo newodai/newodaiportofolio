@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>newodai | Community Staff & Moderator</title>
+    <title>About — newodai</title>
     
-    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -17,372 +16,50 @@
             --card-bg: rgba(255, 255, 255, 0.03);
             --card-border: rgba(255, 255, 255, 0.08);
             --accent-red: #ef4444;
-            --accent-dark-red: #dc2626;
             --text-white: #ffffff;
             --text-muted: #9ca3af;
             --font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-color); color: var(--text-white); font-family: var(--font-family); line-height: 1.6; padding-top: 100px; }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-white);
-            font-family: var(--font-family);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+        nav { position: fixed; top: 0; left: 0; width: 100%; padding: 20px 0; background: rgba(11, 12, 16, 0.8); backdrop-filter: blur(16px); z-index: 1000; border-bottom: 1px solid var(--card-border); }
+        .nav-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; color: white; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-white); }
 
-        /* --- NAVBAR --- */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px 0;
-            background: rgba(11, 12, 16, 0.8);
-            backdrop-filter: blur(16px);
-            z-index: 1000;
-            border-bottom: 1px solid var(--card-border);
-        }
+        section { padding: 40px 24px 90px; max-width: 1100px; margin: 0 auto; }
+        .section-header { margin-bottom: 48px; }
+        .section-title { font-size: 2rem; font-weight: 700; display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+        .section-desc { color: var(--text-muted); font-size: 1rem; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+        .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 28px; transition: border-color 0.3s, transform 0.3s; }
+        .card:hover { border-color: rgba(239, 68, 68, 0.4); transform: translateY(-4px); }
+        .card h3 { font-size: 1.25rem; margin-bottom: 12px; }
+        .card p { color: var(--text-muted); font-size: 0.95rem; }
 
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-white);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 140px 24px 80px;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 750px;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            border-radius: 100px;
-            color: #f87171;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-        }
-
-        .badge-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #10b981;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #10b981;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, #fff, var(--text-muted));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            margin-bottom: 36px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 12px 28px;
-            border-radius: 10px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-gradient {
-            background: linear-gradient(135deg, var(--accent-red), var(--accent-dark-red));
-            color: white;
-            box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
-        }
-
-        .btn-gradient:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            background: var(--card-bg);
-            color: white;
-            border: 1px solid var(--card-border);
-        }
-
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-2px);
-        }
-
-        /* --- SECTIONS --- */
-        section {
-            padding: 90px 24px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            margin-bottom: 48px;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 8px;
-        }
-
-        .section-desc {
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-
-        /* --- GRID LAYOUTS --- */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
-        }
-
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-        }
-
-        /* --- CARDS --- */
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 28px;
-            transition: border-color 0.3s, transform 0.3s;
-            position: relative;
-        }
-
-        .card:hover {
-            border-color: rgba(239, 68, 68, 0.4);
-            transform: translateY(-4px);
-        }
-
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--accent-red);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            margin-bottom: 20px;
-        }
-
-        .card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 12px;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .card-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 20px;
-            color: var(--accent-red);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        /* --- EXPERIENCE ITEMS --- */
-        .exp-card {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 24px;
-        }
-
-        .exp-badge {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--card-border);
-            padding: 4px 12px;
-            border-radius: 100px;
-            font-size: 0.8rem;
-            color: var(--accent-red);
-            font-weight: 600;
-        }
-
-        /* --- CONTACT CARDS --- */
-        .contact-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-        }
-
-        .contact-card:hover {
-            border-color: var(--accent-red);
-        }
-
-        .contact-left {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .contact-icon {
-            font-size: 1.5rem;
-            color: var(--accent-red);
-        }
-
-        .contact-label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .contact-val {
-            font-weight: 600;
-        }
-
-        .toast {
-            position: absolute;
-            top: -30px;
-            right: 20px;
-            background: var(--accent-red);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-        }
-
-        .toast.active {
-            opacity: 1;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: var(--text-muted);
-            border-top: 1px solid var(--card-border);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .nav-links { display: none; }
-        }
+        footer { text-align: center; padding: 40px; color: var(--text-muted); border-top: 1px solid var(--card-border); font-size: 0.9rem; margin-top: auto; }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
-<nav>
-    <div class="nav-container">
-        <div class="logo"><a href="index.html">newodai</a></div>
-        <ul class="nav-links">
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="experience.html">Experience</a></li>
-            <li><a href="reviews.html">Reviews</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </div>
-</nav>
-
-    <!-- HERO -->
-    <div class="hero">
-        <div class="hero-content">
-            <div class="badge">
-                <span class="badge-dot"></span> OPEN FOR STAFF POSITIONS
-            </div>
-            <h1>I'm newodai</h1>
-            <p>Experienced Community Moderator and Staff Team Member. Dedicated to maintaining clean chat environments, resolving player issues, and supporting Minecraft & Discord communities.</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-gradient">Hire Me</a>
-                <a href="#services" class="btn btn-outline">View Capabilities</a>
-            </div>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">newodai</a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
         </div>
-    </div>
+    </nav>
 
-    <!-- ABOUT -->
     <section id="about">
         <div class="section-header">
             <h2 class="section-title"><i class="fa-solid fa-user-shield"></i> About Me</h2>
@@ -400,146 +77,9 @@
         </div>
     </section>
 
-    <!-- SERVICES -->
-    <section id="services">
-        <div class="section-header">
-            <h2 class="section-title"><i class="fa-solid fa-list-check"></i> What I Offer</h2>
-            <p class="section-desc">Dedicated staffing and moderation support for your server</p>
-        </div>
-        <div class="grid-3">
-            <div class="card">
-                <div class="card-icon"><i class="fa-solid fa-shield"></i></div>
-                <h3>Active Moderation</h3>
-                <p>Enforcing server rules, filtering toxic behavior, and keeping both chat and voice environments safe and enjoyable.</p>
-                <a href="#contact" class="card-link">Contact Me <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-            <div class="card">
-                <div class="card-icon"><i class="fa-solid fa-headset"></i></div>
-                <h3>Player & Ticket Support</h3>
-                <p>Handling community support tickets efficiently, answering player questions, and resolving disputes promptly.</p>
-                <a href="#contact" class="card-link">Contact Me <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-            <div class="card">
-                <div class="card-icon"><i class="fa-solid fa-users-gear"></i></div>
-                <h3>Team Leadership</h3>
-                <p>Assisting high-tier staff with team management, applicant screening, and guiding junior moderators.</p>
-                <a href="#contact" class="card-link">Contact Me <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <!-- FEATURED PROJECTS -->
-    <section id="projects">
-        <div class="section-header">
-            <h2 class="section-title"><i class="fa-solid fa-star"></i> Current Communities</h2>
-            <p class="section-desc">Servers where I actively provide staffing support</p>
-        </div>
-        <div class="grid-2">
-            <div class="card">
-                <span class="toast" id="toast-server">IP Copied!</span>
-                <h3>Foreignmc.xyz</h3>
-                <p>A community-focused Minecraft server where I actively serve as part of the moderation staff team.</p>
-                <button onclick="copyText('Foreignmc.xyz', 'toast-server')" class="btn btn-outline" style="margin-top: 20px;">
-                    <i class="fa-regular fa-copy" style="margin-right: 6px;"></i> Join Foreignmc.xyz
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience">
-        <div class="section-header">
-            <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Experience</h2>
-            <p class="section-desc">Previous and current staff positions</p>
-        </div>
-        <div class="grid-2">
-            <div class="card exp-card">
-                <div>
-                    <strong>Moderator</strong>
-                    <div style="color: var(--text-muted); font-size: 0.85rem;">FOREIGNMC.XYZ</div>
-                </div>
-                <span class="exp-badge">2,100+ Members</span>
-            </div>
-            <div class="card exp-card">
-                <div>
-                    <strong>Helper</strong>
-                    <div style="color: var(--text-muted); font-size: 0.85rem;">play.mascacraft.ro</div>
-                </div>
-                <span class="exp-badge">300+ Members</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- REVIEWS -->
-    <section id="reviews">
-        <div class="section-header">
-            <h2 class="section-title"><i class="fa-solid fa-message"></i> Endorsements</h2>
-            <p class="section-desc">Feedback on my moderation and staffing performance</p>
-        </div>
-        <div class="grid-3">
-            <div class="card">
-                <div style="color: #f59e0b; margin-bottom: 10px;">★★★★★</div>
-                <p>"newodai is extremely active, reliable, and handles ticket support very maturely."</p>
-                <small style="color: var(--text-muted); display: block; margin-top: 15px;">— Server Owner</small>
-            </div>
-            <div class="card">
-                <div style="color: #f59e0b; margin-bottom: 10px;">★★★★★</div>
-                <p>"Great communication and always willing to help out during busy hours."</p>
-                <small style="color: var(--text-muted); display: block; margin-top: 15px;">— Head Admin</small>
-            </div>
-            <div class="card">
-                <div style="color: #f59e0b; margin-bottom: 10px;">★★★★★</div>
-                <p>"Fair moderation and very helpful with new players."</p>
-                <small style="color: var(--text-muted); display: block; margin-top: 15px;">— Community Lead</small>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact">
-        <div class="section-header">
-            <h2 class="section-title"><i class="fa-solid fa-paper-plane"></i> Contact Me</h2>
-            <p class="section-desc">Click below to copy my contact details</p>
-        </div>
-        <div class="grid-2">
-            <div class="contact-card" onclick="copyText('8gry', 'toast-1')">
-                <span class="toast" id="toast-1">Copied!</span>
-                <div class="contact-left">
-                    <i class="fa-brands fa-discord contact-icon"></i>
-                    <div>
-                        <div class="contact-label">Discord</div>
-                        <div class="contact-val">8gry</div>
-                    </div>
-                </div>
-                <i class="fa-regular fa-copy" style="color: var(--text-muted);"></i>
-            </div>
-            <div class="contact-card" onclick="copyText('isglaur@email.com', 'toast-2')">
-                <span class="toast" id="toast-2">Copied!</span>
-                <div class="contact-left">
-                    <i class="fa-solid fa-envelope contact-icon"></i>
-                    <div>
-                        <div class="contact-label">Email</div>
-                        <div class="contact-val">isglaur@email.com</div>
-                    </div>
-                </div>
-                <i class="fa-regular fa-copy" style="color: var(--text-muted);"></i>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
     <footer>
         <p>&copy; 2026 newodai. All rights reserved.</p>
     </footer>
 
-    <script>
-        function copyText(text, toastId) {
-            navigator.clipboard.writeText(text).then(() => {
-                const toast = document.getElementById(toastId);
-                toast.classList.add('active');
-                setTimeout(() => toast.classList.remove('active'), 2000);
-            });
-        }
-    </script>
 </body>
 </html>
