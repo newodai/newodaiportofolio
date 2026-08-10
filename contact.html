@@ -5,58 +5,296 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact — newodai</title>
     
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         :root {
-            --bg-color: #0b0c10;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --card-border: rgba(255, 255, 255, 0.08);
-            --accent-red: #ef4444;
-            --text-white: #ffffff;
-            --text-muted: #9ca3af;
-            --font-family: 'Plus Jakarta Sans', sans-serif;
+            --bg-color: #f7f4ee;
+            --card-bg: #fffdf9;
+            --text-dark: #201815;
+            --text-muted: #807770;
+            --border-color: #e5dfd5;
+            --accent-warm: #bc5525;
+            --accent-hover: #a1451b;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'Space Mono', monospace;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-color); color: var(--text-white); font-family: var(--font-family); line-height: 1.6; padding-top: 100px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        nav { position: fixed; top: 0; left: 0; width: 100%; padding: 20px 0; background: rgba(11, 12, 16, 0.8); backdrop-filter: blur(16px); z-index: 1000; border-bottom: 1px solid var(--card-border); }
-        .nav-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; color: white; }
-        .nav-links { display: flex; gap: 30px; list-style: none; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--text-white); }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            font-family: var(--font-sans);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-        section { padding: 40px 24px 90px; max-width: 1100px; margin: 0 auto; }
-        .section-header { margin-bottom: 48px; }
-        .section-title { font-size: 2rem; font-weight: 700; display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
-        .section-desc { color: var(--text-muted); font-size: 1rem; }
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+        /* --- NAVBAR --- */
+        nav {
+            padding: 24px 0;
+            background: rgba(247, 244, 238, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+        }
 
-        .contact-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 20px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.3s; position: relative; }
-        .contact-card:hover { border-color: var(--accent-red); }
-        .contact-left { display: flex; align-items: center; gap: 16px; }
-        .contact-icon { font-size: 1.5rem; color: var(--accent-red); }
-        .contact-label { font-size: 0.8rem; color: var(--text-muted); }
-        .contact-val { font-weight: 600; }
+        .nav-container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-        .toast { position: absolute; top: -30px; right: 20px; background: var(--accent-red); color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
-        .toast.active { opacity: 1; }
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: var(--text-dark);
+        }
 
-        footer { text-align: center; padding: 40px; color: var(--text-muted); border-top: 1px solid var(--card-border); font-size: 0.9rem; }
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text-dark);
+        }
+
+        /* --- MAIN LAYOUT --- */
+        main {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 160px 32px 80px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        /* --- LEFT COLUMN --- */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .section-tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-tag::before {
+            content: "";
+            width: 20px;
+            height: 1px;
+            background-color: var(--text-muted);
+        }
+
+        .contact-title {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 0.98;
+            letter-spacing: -1.8px;
+            color: var(--text-dark);
+        }
+
+        .contact-title span {
+            color: var(--accent-warm);
+        }
+
+        .contact-desc {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            max-width: 420px;
+            font-weight: 500;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            letter-spacing: 1px;
+            color: #436d2c;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #558b37;
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(85, 139, 55, 0.4);
+        }
+
+        /* --- RIGHT COLUMN / CARD FORM --- */
+        .form-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 48px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.03), 0 2px 6px rgba(0, 0, 0, 0.02);
+            border: 1px solid var(--border-color);
+        }
+
+        .form-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 36px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .field-group {
+            margin-bottom: 32px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .field-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--border-color);
+            padding: 8px 0 12px;
+            font-family: var(--font-sans);
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-input::placeholder, .form-textarea::placeholder {
+            color: #b0a89e;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            border-bottom-color: var(--accent-warm);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn-submit {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: var(--accent-warm);
+            color: #ffffff;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(188, 85, 37, 0.25);
+        }
+
+        .btn-submit i {
+            font-size: 0.85rem;
+            transition: transform 0.2s ease;
+        }
+
+        .btn-submit:hover i {
+            transform: translate(3px, -3px);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 32px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(0,0,0,0.04);
+            font-family: var(--font-mono);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            main {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding-top: 120px;
+            }
+            .contact-title {
+                font-size: 2.8rem;
+            }
+            .form-card {
+                padding: 32px;
+            }
+        }
     </style>
 </head>
 <body>
 
+    <!-- NAVBAR -->
     <nav>
         <div class="nav-container">
-            <a href="about.html" class="logo">newodai</a>
+            <a href="index.html" class="logo">newodai</a>
             <ul class="nav-links">
-                <li><a href="about.html">About</a></li>
+                <li><a href="index.html">About</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="experience.html">Experience</a></li>
@@ -66,49 +304,54 @@
         </div>
     </nav>
 
-    <section id="contact">
-        <div class="section-header">
-            <h2 class="section-title"><i class="fa-solid fa-paper-plane"></i> Contact Me</h2>
-            <p class="section-desc">Click below to copy my contact details</p>
-        </div>
-        <div class="grid-2">
-            <div class="contact-card" onclick="copyText('8gry', 'toast-1')">
-                <span class="toast" id="toast-1">Copied!</span>
-                <div class="contact-left">
-                    <i class="fa-brands fa-discord contact-icon"></i>
-                    <div>
-                        <div class="contact-label">Discord</div>
-                        <div class="contact-val">8gry</div>
-                    </div>
+    <!-- CONTENT -->
+    <main>
+        <!-- LEFT COLUMN -->
+        <div class="contact-info">
+            <div class="section-tag">04 / Contact</div>
+            <h1 class="contact-title">Need a stronger <span>staff team?</span></h1>
+            <p class="contact-desc">I’m open to roles where thoughtful leadership, clear systems, and a better member experience are the goal.</p>
+            <div>
+                <div class="status-badge">
+                    <span class="status-dot"></span> Open to the right opportunity
                 </div>
-                <i class="fa-regular fa-copy" style="color: var(--text-muted);"></i>
-            </div>
-            <div class="contact-card" onclick="copyText('isglaur@email.com', 'toast-2')">
-                <span class="toast" id="toast-2">Copied!</span>
-                <div class="contact-left">
-                    <i class="fa-solid fa-envelope contact-icon"></i>
-                    <div>
-                        <div class="contact-label">Email</div>
-                        <div class="contact-val">isglaur@email.com</div>
-                    </div>
-                </div>
-                <i class="fa-regular fa-copy" style="color: var(--text-muted);"></i>
             </div>
         </div>
-    </section>
 
+        <!-- RIGHT COLUMN FORM -->
+        <div class="form-card">
+            <div class="form-header">
+                <span>Message / 01</span>
+                <span>Discord</span>
+            </div>
+
+            <form action="https://formspree.io/f/xbjnqkyv" method="POST">
+                <div class="field-group">
+                    <label class="field-label" for="name">lavricq</label>
+                    <input class="form-input" type="text" id="name" name="name" placeholder="What should I call you?" required>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label" for="discord">8gry</label>
+                    <input class="form-input" type="text" id="discord" name="discord" placeholder="8gry" required>
+                </div>
+
+                <div class="field-group">
+                    <label class="field-label" for="opportunity">Opportunity</label>
+                    <textarea class="form-textarea" id="opportunity" name="message" placeholder="Tell me about your community and what you need." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    Send a message <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2026 newodai. All rights reserved.</p>
+        &copy; 2026 newodai. All rights reserved.
     </footer>
 
-    <script>
-        function copyText(text, toastId) {
-            navigator.clipboard.writeText(text).then(() => {
-                const toast = document.getElementById(toastId);
-                toast.classList.add('active');
-                setTimeout(() => toast.classList.remove('active'), 2000);
-            });
-        }
-    </script>
 </body>
 </html>
