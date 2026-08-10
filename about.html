@@ -5,45 +5,373 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About — newodai</title>
     
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         :root {
             --bg-color: #0b0c10;
+            --card-bg: rgba(255, 255, 255, 0.03);
             --card-border: rgba(255, 255, 255, 0.08);
             --accent-red: #ef4444;
+            --accent-hover: #dc2626;
             --text-white: #ffffff;
             --text-muted: #9ca3af;
-            --font-family: 'Plus Jakarta Sans', sans-serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'Space Mono', monospace;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-color); color: var(--text-white); font-family: var(--font-family); line-height: 1.6; padding-top: 100px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        nav { position: fixed; top: 0; left: 0; width: 100%; padding: 20px 0; background: rgba(11, 12, 16, 0.8); backdrop-filter: blur(16px); z-index: 1000; border-bottom: 1px solid var(--card-border); }
-        .nav-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; color: white; }
-        .nav-links { display: flex; gap: 30px; list-style: none; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--text-white); }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            font-family: var(--font-sans);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-        section { padding: 40px 24px 90px; max-width: 1100px; margin: 0 auto; }
-        .section-header { margin-bottom: 48px; }
-        .section-title { font-size: 2.2rem; font-weight: 800; display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
-        .section-desc { color: var(--text-muted); font-size: 1.05rem; }
+        /* Ambient Glow Effect */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
 
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
-        .text-block h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 12px; color: var(--text-white); }
-        .text-block p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; }
+        /* --- NAVBAR --- */
+        nav {
+            padding: 20px 0;
+            background: rgba(11, 12, 16, 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--card-border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
 
-        footer { text-align: center; padding: 40px; color: var(--text-muted); border-top: 1px solid var(--card-border); font-size: 0.9rem; margin-top: auto; }
+        .nav-container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: var(--text-white);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text-white);
+        }
+
+        /* --- MAIN SECTION --- */
+        main {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 150px 24px 60px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- LEFT COLUMN --- */
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .tag-line {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tag-line::before {
+            content: "";
+            width: 20px;
+            height: 1px;
+            background-color: var(--text-muted);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: #22c55e;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+        }
+
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.02;
+            letter-spacing: -1.8px;
+            color: var(--text-white);
+        }
+
+        .hero-title span {
+            color: var(--accent-red);
+        }
+
+        .hero-desc {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            max-width: 440px;
+            font-weight: 500;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            margin-top: 8px;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-red);
+            color: var(--text-white);
+            text-decoration: none;
+            padding: 14px 26px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-white);
+            text-decoration: none;
+            padding: 14px 26px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .hero-footnote {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            margin-top: 10px;
+        }
+
+        /* --- RIGHT COLUMN / PROFILE CARD --- */
+        .profile-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 32px;
+            position: relative;
+            backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 420px;
+            transition: border-color 0.3s ease;
+        }
+
+        .profile-card:hover {
+            border-color: rgba(239, 68, 68, 0.25);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+        }
+
+        .card-center {
+            margin: 30px 0 20px;
+        }
+
+        .card-tag {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+            color: var(--text-white);
+            margin-bottom: 12px;
+        }
+
+        .card-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .card-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-top: 1px solid var(--card-border);
+            padding-top: 24px;
+            gap: 16px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-red);
+        }
+
+        .stat-label {
+            font-family: var(--font-mono);
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .card-sublink {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 16px;
+        }
+
+        .card-sublink a {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.3s;
+        }
+
+        .card-sublink a:hover {
+            color: var(--text-white);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--card-border);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            main {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding-top: 120px;
+            }
+            .hero-title {
+                font-size: 2.8rem;
+            }
+        }
     </style>
 </head>
 <body>
 
+    <!-- NAVBAR -->
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">newodai</a>
@@ -58,23 +386,73 @@
         </div>
     </nav>
 
-    <section id="about">
-        <div class="section-header">
-            <h2 class="section-title"><i class="fa-solid fa-user-shield" style="color: var(--accent-red);"></i> About Me</h2>
-            <p class="section-desc">Who I am and what I bring to staff teams</p>
-        </div>
-        <div class="grid-2">
-            <div class="text-block">
-                <h3>👋 Who I Am</h3>
-                <p>Dedicated community staff member specializing in real-time chat moderation, ticket management, and player support for Discord and Minecraft communities.</p>
+    <!-- MAIN ABOUT SECTION -->
+    <main>
+        <!-- LEFT COLUMN -->
+        <div class="hero-left">
+            <div class="tag-line">01 / About Me</div>
+            
+            <div class="status-badge">
+                <span class="status-dot"></span> Dedicated Community Specialist
             </div>
-            <div class="text-block">
-                <h3>📚 What I Bring</h3>
-                <p>High activity, calm crisis management, unbiased decision-making, and a hands-on approach to keeping server environments clean, welcoming, and safe.</p>
-            </div>
-        </div>
-    </section>
 
+            <h1 class="hero-title">Driven by <span>impact</span> and trust.</h1>
+
+            <p class="hero-desc">
+                Specializing in real-time moderation, ticket workflow management, and player support across large-scale Discord and Minecraft servers.
+            </p>
+
+            <div class="hero-actions">
+                <a href="contact.html" class="btn-primary">
+                    Get in touch <i class="fa-solid fa-arrow-right"></i>
+                </a>
+                <a href="services.html" class="btn-secondary">
+                    View services <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+
+            <div class="hero-footnote">Moderation, support systems, and leadership.</div>
+        </div>
+
+        <!-- RIGHT COLUMN CARD -->
+        <div>
+            <div class="profile-card">
+                <div class="card-top">
+                    <span>OVERVIEW / 02</span>
+                    <span class="status-badge"><span class="status-dot"></span> ACTIVE</span>
+                </div>
+
+                <div class="card-center">
+                    <span class="card-tag">WHAT I BRING</span>
+                    <h2 class="card-title">Structured support & calm leadership</h2>
+                    <p class="card-text">
+                        I focus on maintaining clean, welcoming server environments through fair decision-making, fast ticket resolutions, and active chat management.
+                    </p>
+                </div>
+
+                <div class="card-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">100%</span>
+                        <span class="stat-label">Dedication</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">24/7</span>
+                        <span class="stat-label">Monitoring</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">0s</span>
+                        <span class="stat-label">Bias</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-sublink">
+                <a href="projects.html">Explore past work <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
     <footer>
         <p>&copy; 2026 newodai. All rights reserved.</p>
     </footer>
