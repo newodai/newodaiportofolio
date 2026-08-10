@@ -13,7 +13,6 @@
     <style>
         :root {
             --bg-color: #0b0c10;
-            --card-bg: rgba(255, 255, 255, 0.03);
             --card-border: rgba(255, 255, 255, 0.08);
             --accent-red: #ef4444;
             --text-white: #ffffff;
@@ -33,13 +32,12 @@
 
         section { padding: 40px 24px 90px; max-width: 1100px; margin: 0 auto; }
         .section-header { margin-bottom: 48px; }
-        .section-title { font-size: 2rem; font-weight: 700; display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
-        .section-desc { color: var(--text-muted); font-size: 1rem; }
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-        .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 28px; transition: border-color 0.3s, transform 0.3s; }
-        .card:hover { border-color: rgba(239, 68, 68, 0.4); transform: translateY(-4px); }
-        .card h3 { font-size: 1.25rem; margin-bottom: 12px; }
-        .card p { color: var(--text-muted); font-size: 0.95rem; }
+        .section-title { font-size: 2.2rem; font-weight: 800; display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+        .section-desc { color: var(--text-muted); font-size: 1.05rem; }
+
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .text-block h3 { font-size: 1.35rem; font-weight: 700; margin-bottom: 12px; color: var(--text-white); }
+        .text-block p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; }
 
         footer { text-align: center; padding: 40px; color: var(--text-muted); border-top: 1px solid var(--card-border); font-size: 0.9rem; margin-top: auto; }
     </style>
@@ -48,7 +46,7 @@
 
     <nav>
         <div class="nav-container">
-            <a href="about.html" class="logo">newodai</a>
+            <a href="index.html" class="logo">newodai</a>
             <ul class="nav-links">
                 <li><a href="about.html" class="active">About</a></li>
                 <li><a href="services.html">Services</a></li>
@@ -62,17 +60,17 @@
 
     <section id="about">
         <div class="section-header">
-            <h2 class="section-title"><i class="fa-solid fa-user-shield"></i> About Me</h2>
+            <h2 class="section-title"><i class="fa-solid fa-user-shield" style="color: var(--accent-red);"></i> About Me</h2>
             <p class="section-desc">Who I am and what I bring to staff teams</p>
         </div>
         <div class="grid-2">
-            <div class="card">
+            <div class="text-block">
                 <h3>👋 Who I Am</h3>
-                <p>Hi, I'm newodai! I specialize in active community staffing and moderation. Rather than technical Discord development, my focus is strictly on active player support, moderation duties, and maintaining a welcoming atmosphere for members.</p>
+                <p>Dedicated community staff member specializing in real-time chat moderation, ticket management, and player support for Discord and Minecraft communities.</p>
             </div>
-            <div class="card">
-                <h3>📚 Staffing Approach</h3>
-                <p>I bring reliability, clear communication, and unbiased judgment to every server I work with. I excel at handling ticket support, resolving rule violations calmly, and helping guide new staff members.</p>
+            <div class="text-block">
+                <h3>📚 What I Bring</h3>
+                <p>High activity, calm crisis management, unbiased decision-making, and a hands-on approach to keeping server environments clean, welcoming, and safe.</p>
             </div>
         </div>
     </section>
