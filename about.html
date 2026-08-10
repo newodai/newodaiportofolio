@@ -3,148 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - newodai</title>
+    <title>newodai</title>
     <style>
-        /* --- GLOBAL STYLES --- */
+        /* RESET */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         }
 
         body {
-            background-color: #0d0e12;
-            color: #e0e0e0;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        /* --- NAVBAR --- */
-        nav {
-            background-color: #121318;
-            border-bottom: 1px solid #22242d;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1100px;
-            margin: 0 auto;
+            background-color: #0b0c10;
+            color: #ffffff;
+            padding: 20px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
         }
 
-        .logo a {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: #ffffff;
-            letter-spacing: -0.5px;
+        /* --- FLOATING PILL NAVBAR --- */
+        nav {
+            width: 100%;
+            max-width: 950px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px 8px 20px;
+            background: #16181f;
+            border: 1px solid #232733;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            margin-top: 10px;
         }
 
+        /* Brand / Logo */
+        .brand {
+            font-weight: 700;
+            font-size: 1rem;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: -0.3px;
+        }
+
+        /* Nav Tab Links Outer Container */
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 1.8rem;
+            gap: 4px;
+            background: #0d0e12;
+            padding: 4px;
+            border-radius: 8px;
+            border: 1px solid #1f222e;
         }
 
+        /* Nav Tab Links */
         .nav-links a {
-            font-size: 0.95rem;
-            color: #a0a5b5;
-            transition: color 0.2s ease;
+            text-decoration: none;
+            color: #8f96a3;
+            font-size: 0.85rem;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 6px;
+            transition: all 0.2s ease-in-out;
+            display: inline-block;
         }
 
-        .nav-links a:hover,
+        /* Hover State */
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        /* Active Selected Tab */
         .nav-links a.active {
+            background: #232733;
             color: #ffffff;
+            font-weight: 600;
         }
 
-        /* --- MAIN CONTENT AREA --- */
-        main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
+        /* Extra Button / Tag on Right (Optional) */
+        .nav-extra {
+            display: flex;
+            align-items: center;
         }
 
-        .about-card {
-            background-color: #14161d;
-            border: 1px solid #222530;
-            border-radius: 12px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        .btn-status {
+            background: rgba(34, 197, 94, 0.1);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        h1 {
-            font-size: 2.2rem;
-            color: #ffffff;
-            margin-bottom: 1rem;
+        .dot {
+            width: 6px;
+            height: 6px;
+            background: #4ade80;
+            border-radius: 50%;
         }
 
-        h2 {
-            font-size: 1.4rem;
-            color: #ffffff;
-            margin-top: 2rem;
-            margin-bottom: 0.75rem;
-        }
-
-        p {
-            color: #a0a5b5;
-            margin-bottom: 1rem;
-            font-size: 1.05rem;
-        }
-
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 600px) {
-            .nav-container {
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            nav {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 12px;
+                padding: 12px;
             }
             .nav-links {
-                gap: 1rem;
-                flex-wrap: wrap;
+                width: 100%;
                 justify-content: center;
+                flex-wrap: wrap;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
+    <!-- FLOATING PILL NAVBAR -->
     <nav>
-        <div class="nav-container">
-            <div class="logo"><a href="index.html">newodai</a></div>
-            <ul class="nav-links">
-                <li><a href="about.html" class="active">About</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="experience.html">Experience</a></li>
-                <li><a href="reviews.html">Reviews</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+        <!-- Logo -->
+        <a href="index.html" class="brand">newodai</a>
+
+        <!-- Middle Pill Tabs -->
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Overview</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="experience.html">Experience</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <!-- Right Side Badge / Action Button -->
+        <div class="nav-extra">
+            <span class="btn-status"><span class="dot"></span> Online</span>
         </div>
     </nav>
-
-    <!-- MAIN CONTENT -->
-    <main>
-        <div class="about-card">
-            <h1>About Me</h1>
-            <p>Welcome! I'm Odai, a web developer focused on creating modern, fast, and responsive digital experiences.</p>
-            
-            <h2>My Background</h2>
-            <p>I specialize in building full-stack applications, static websites, and custom web tools. I enjoy taking ideas from initial concepts to fully functional, live-deployed projects.</p>
-
-            <h2>Tech Stack & Skills</h2>
-            <p>HTML, CSS, JavaScript, Web Hosting (Cloudflare Workers / Pages), and GitHub Version Control.</p>
-        </div>
-    </main>
 
 </body>
 </html>
