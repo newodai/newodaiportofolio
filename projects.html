@@ -4,44 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects — newodai</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-        body { background-color: #0b0c10; color: #ffffff; padding: 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-        nav { width: 100%; max-width: 950px; display: flex; justify-content: space-between; align-items: center; padding: 8px 12px 8px 20px; background: #16181f; border: 1px solid #232733; border-radius: 12px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); margin-top: 10px; }
-        .brand { font-weight: 700; font-size: 1rem; color: #ffffff; text-decoration: none; letter-spacing: -0.3px; }
-        .nav-links { display: flex; list-style: none; gap: 4px; background: #0d0e12; padding: 4px; border-radius: 8px; border: 1px solid #1f222e; }
-        .nav-links a { text-decoration: none; color: #8f96a3; font-size: 0.85rem; font-weight: 500; padding: 6px 14px; border-radius: 6px; transition: all 0.2s ease-in-out; display: inline-block; }
-        .nav-links a:hover { color: #ffffff; }
-        .nav-links a.active { background: #232733; color: #ffffff; font-weight: 600; }
-        .btn-status { background: rgba(34, 197, 94, 0.1); color: #4ade80; border: 1px solid rgba(34, 197, 94, 0.2); padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 6px; }
-        .dot { width: 6px; height: 6px; background: #4ade80; border-radius: 50%; }
-        main { width: 100%; max-width: 950px; margin-top: 30px; }
-        .bento-card { background: #16181f; border: 1px solid #232733; border-radius: 16px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .tag { font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; color: #4ade80; font-weight: 700; margin-bottom: 12px; }
-        h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 16px; color: #ffffff; }
-        p { color: #8f96a3; font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px; }
-        @media (max-width: 768px) { nav { flex-direction: column; gap: 12px; padding: 12px; } .nav-links { width: 100%; justify-content: center; flex-wrap: wrap; } }
+        :root {
+            --bg-color: #0b0c10;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --accent-red: #ef4444;
+            --accent-dark-red: #dc2626;
+            --text-white: #ffffff;
+            --text-muted: #9ca3af;
+            --font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-color); color: var(--text-white); font-family: var(--font-family); line-height: 1.6; padding-top: 100px; }
+
+        nav { position: fixed; top: 0; left: 0; width: 100%; padding: 20px 0; background: rgba(11, 12, 16, 0.8); backdrop-filter: blur(16px); z-index: 1000; border-bottom: 1px solid var(--card-border); }
+        .nav-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; color: white; }
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--text-white); }
+
+        section { padding: 40px 24px 90px; max-width: 1100px; margin: 0 auto; }
+        .section-header { margin-bottom: 48px; }
+        .section-title { font-size: 2rem; font-weight: 700; display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+        .section-desc { color: var(--text-muted); font-size: 1rem; }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+        .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 28px; transition: border-color 0.3s, transform 0.3s; position: relative; }
+        .card:hover { border-color: rgba(239, 68, 68, 0.4); transform: translateY(-4px); }
+        .card h3 { font-size: 1.25rem; margin-bottom: 12px; }
+        .card p { color: var(--text-muted); font-size: 0.95rem; }
+
+        .btn { padding: 12px 28px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.3s ease; cursor: pointer; border: none; }
+        .btn-outline { background: var(--card-bg); color: white; border: 1px solid var(--card-border); }
+        .btn-outline:hover { background: rgba(255, 255, 255, 0.08); transform: translateY(-2px); }
+
+        .toast { position: absolute; top: 15px; right: 20px; background: var(--accent-red); color: white; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; opacity: 0; transition: opacity 0.3s; pointer-events: none; }
+        .toast.active { opacity: 1; }
+
+        footer { text-align: center; padding: 40px; color: var(--text-muted); border-top: 1px solid var(--card-border); font-size: 0.9rem; }
     </style>
 </head>
 <body>
+
     <nav>
-        <a href="index.html" class="brand">newodai</a>
-        <ul class="nav-links">
-            <li><a href="index.html">Overview</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="projects.html" class="active">Projects</a></li>
-            <li><a href="experience.html">Experience</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="nav-extra"><span class="btn-status"><span class="dot"></span> Online</span></div>
-    </nav>
-    <main>
-        <div class="bento-card">
-            <div class="tag">✦ Projects</div>
-            <h1>My Recent Work</h1>
-            <p>Check out my latest web builds, applications, and tools here!</p>
+        <div class="nav-container">
+            <a href="about.html" class="logo">newodai</a>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
         </div>
-    </main>
+    </nav>
+
+    <section id="projects">
+        <div class="section-header">
+            <h2 class="section-title"><i class="fa-solid fa-star"></i> Current Communities</h2>
+            <p class="section-desc">Servers where I actively provide staffing support</p>
+        </div>
+        <div class="grid-2">
+            <div class="card">
+                <span class="toast" id="toast-server">IP Copied!</span>
+                <h3>Foreignmc.xyz</h3>
+                <p>A community-focused Minecraft server where I actively serve as part of the moderation staff team.</p>
+                <button onclick="copyText('Foreignmc.xyz', 'toast-server')" class="btn btn-outline" style="margin-top: 20px;">
+                    <i class="fa-regular fa-copy" style="margin-right: 6px;"></i> Join Foreignmc.xyz
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 newodai. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function copyText(text, toastId) {
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById(toastId);
+                toast.classList.add('active');
+                setTimeout(() => toast.classList.remove('active'), 2000);
+            });
+        }
+    </script>
 </body>
 </html>
