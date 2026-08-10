@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experience — newodai</title>
     
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
@@ -16,41 +17,209 @@
             --card-bg: rgba(255, 255, 255, 0.03);
             --card-border: rgba(255, 255, 255, 0.08);
             --accent-red: #ef4444;
+            --accent-hover: #dc2626;
             --text-white: #ffffff;
             --text-muted: #9ca3af;
-            --font-family: 'Plus Jakarta Sans', sans-serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --font-mono: 'Space Mono', monospace;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-color); color: var(--text-white); font-family: var(--font-family); line-height: 1.6; padding-top: 100px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        nav { position: fixed; top: 0; left: 0; width: 100%; padding: 20px 0; background: rgba(11, 12, 16, 0.8); backdrop-filter: blur(16px); z-index: 1000; border-bottom: 1px solid var(--card-border); }
-        .nav-container { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.5px; text-decoration: none; color: white; }
-        .nav-links { display: flex; gap: 30px; list-style: none; }
-        .nav-links a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; font-weight: 500; transition: color 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--text-white); }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-white);
+            font-family: var(--font-sans);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-        section { padding: 40px 24px 90px; max-width: 1100px; margin: 0 auto; }
-        .section-header { margin-bottom: 48px; }
-        .section-title { font-size: 2rem; font-weight: 700; display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
-        .section-desc { color: var(--text-muted); font-size: 1rem; }
-        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
-        
-        .card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 28px; transition: border-color 0.3s, transform 0.3s; }
-        .card:hover { border-color: rgba(239, 68, 68, 0.4); transform: translateY(-4px); }
-        .exp-card { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; }
-        .exp-badge { background: rgba(255, 255, 255, 0.05); border: 1px solid var(--card-border); padding: 4px 12px; border-radius: 100px; font-size: 0.8rem; color: var(--accent-red); font-weight: 600; }
+        /* Ambient Glow Effect */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(239, 68, 68, 0.08) 0%, rgba(0, 0, 0, 0) 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
 
-        footer { text-align: center; padding: 40px; color: var(--text-muted); border-top: 1px solid var(--card-border); font-size: 0.9rem; }
+        /* --- NAVBAR --- */
+        nav {
+            padding: 20px 0;
+            background: rgba(11, 12, 16, 0.8);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--card-border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: var(--text-white);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text-white);
+        }
+
+        /* --- MAIN CONTENT --- */
+        main {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 150px 24px 60px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* --- EXPERIENCE GRID --- */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .exp-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(12px);
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .exp-card:hover {
+            border-color: rgba(239, 68, 68, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .exp-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .exp-role {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-white);
+        }
+
+        .exp-server {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* BADGES */
+        .badge-members {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            background: rgba(239, 68, 68, 0.08);
+            padding: 6px 14px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .badge-closed {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            background: rgba(239, 68, 68, 0.08);
+            padding: 6px 14px;
+            border-radius: 20px;
+            text-transform: lowercase;
+            white-space: nowrap;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--card-border);
+            position: relative;
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
 
+    <!-- NAVBAR -->
     <nav>
         <div class="nav-container">
-            <a href="about.html" class="logo">newodai</a>
+            <a href="index.html" class="logo">newodai</a>
             <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="projects.html">Projects</a></li>
@@ -61,35 +230,44 @@
         </div>
     </nav>
 
-    <section id="experience">
+    <!-- MAIN EXPERIENCE SECTION -->
+    <main>
         <div class="section-header">
-            <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Experience</h2>
-            <p class="section-desc">Previous and current staff positions</p>
+            <h1 class="section-title"><i class="fa-solid fa-briefcase"></i> Experience</h1>
+            <p class="section-subtitle">Previous and current staff positions</p>
         </div>
-        <div class="grid-2">
-            <div class="card exp-card">
-                <div>
-                    <strong>Moderator</strong>
-                    <div style="color: var(--text-muted); font-size: 0.85rem;">FOREIGNMC.XYZ</div>
-                </div>
-                <span class="exp-badge">2,100+ Members</span>
-            </div>
-            <div class="card exp-card">
-                <div>
-                    <strong>Helper</strong>
-                    <div style="color: var(--text-muted); font-size: 0.85rem;">play.mascacraft.ro</div>
-                </div>
-                <span class="exp-badge">300+ Members</span>
-            </div>
-            <div>
-                    <strong>Helper</strong>
-                    <div style="color: var(--text-muted); font-size: 0.85rem;">play.sharkynetwork.ro</div>
-                </div>
-                <span class="exp-badge">closed</span>
-            </div>
-        </div>
-    </section>
 
+        <div class="experience-grid">
+            <!-- FOREIGNMC -->
+            <div class="exp-card">
+                <div class="exp-info">
+                    <div class="exp-role">Moderator</div>
+                    <div class="exp-server">FOREIGNMC.XYZ</div>
+                </div>
+                <span class="badge-members">2,100+ Members</span>
+            </div>
+
+            <!-- MASCACRAFT -->
+            <div class="exp-card">
+                <div class="exp-info">
+                    <div class="exp-role">Helper</div>
+                    <div class="exp-server">play.mascacraft.ro</div>
+                </div>
+                <span class="badge-members">300+ Members</span>
+            </div>
+
+            <!-- SHARKYNETWORK -->
+            <div class="exp-card">
+                <div class="exp-info">
+                    <div class="exp-role">Helper</div>
+                    <div class="exp-server">play.sharkynetwork.ro</div>
+                </div>
+                <span class="badge-closed">closed</span>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
     <footer>
         <p>&copy; 2026 newodai. All rights reserved.</p>
     </footer>
