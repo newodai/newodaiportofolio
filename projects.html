@@ -56,8 +56,9 @@
 
     <nav>
         <div class="nav-container">
-            <a href="about.html" class="logo">newodai</a>
+            <a href="index.html" class="logo">newodai</a>
             <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="projects.html" class="active">Projects</a></li>
@@ -73,13 +74,25 @@
             <h2 class="section-title"><i class="fa-solid fa-star"></i> Current Communities</h2>
             <p class="section-desc">Servers where I actively provide staffing support</p>
         </div>
+        
         <div class="grid-2">
+            <!-- SERVER 1 -->
             <div class="card">
-                <span class="toast" id="toast-server">IP Copied!</span>
+                <span class="toast" id="toast-server-1">IP Copied!</span>
                 <h3>Foreignmc.xyz</h3>
                 <p>A community-focused Minecraft server where I actively serve as part of the moderation staff team.</p>
-                <button onclick="copyText('Foreignmc.xyz', 'toast-server')" class="btn btn-outline" style="margin-top: 20px;">
+                <button onclick="copyText('Foreignmc.xyz', 'toast-server-1')" class="btn btn-outline" style="margin-top: 20px;">
                     <i class="fa-regular fa-copy" style="margin-right: 6px;"></i> Join Foreignmc.xyz
+                </button>
+            </div>
+
+            <!-- SERVER 2 -->
+            <div class="card">
+                <span class="toast" id="toast-server-2">IP Copied!</span>
+                <h3>play.concordmc.net</h3>
+                <p>An active Minecraft network where I assist with in-game moderation, player support tickets, and community management.</p>
+                <button onclick="copyText('play.concordmc.net', 'toast-server-2')" class="btn btn-outline" style="margin-top: 20px;">
+                    <i class="fa-regular fa-copy" style="margin-right: 6px;"></i> Join play.concordmc.net
                 </button>
             </div>
         </div>
