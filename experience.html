@@ -137,6 +137,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 20px;
+            align-items: center;
         }
 
         .exp-card {
@@ -149,6 +150,25 @@
             align-items: center;
             backdrop-filter: blur(12px);
             transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        /* SMALL CARD VARIANT */
+        .exp-card.exp-card-sm {
+            padding: 16px 20px;
+            border-radius: 12px;
+        }
+
+        .exp-card.exp-card-sm .exp-role {
+            font-size: 1.1rem;
+        }
+
+        .exp-card.exp-card-sm .exp-server {
+            font-size: 0.8rem;
+        }
+
+        .exp-card.exp-card-sm .badge-members {
+            font-size: 0.65rem;
+            padding: 4px 10px;
         }
 
         .exp-card:hover {
@@ -265,7 +285,7 @@
                 <span class="badge-closed">closed</span>
             </div>
 
-            <!-- concordmc -->
+            <!-- CONCORDMC -->
             <div class="exp-card">
                 <div class="exp-info">
                     <div class="exp-role">Jr.Mod</div>
@@ -273,10 +293,9 @@
                 </div>
                 <span class="badge-members">8,643+ Members</span>
             </div>
-        </div>
 
-         <!-- stilled -->
-            <div class="exp-card">
+            <!-- STILLED (SMALL BOX) -->
+            <div class="exp-card exp-card-sm">
                 <div class="exp-info">
                     <div class="exp-role">Sr.Mod</div>
                     <div class="exp-server">unreleased</div>
